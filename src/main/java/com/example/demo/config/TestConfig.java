@@ -1,4 +1,4 @@
-package com.example.config;
+package com.example.demo.config;
 
 import java.util.Arrays;
 
@@ -18,7 +18,6 @@ public class TestConfig implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
 		User u1 = new User(null,"João Depollo","joao@gmail.com","9888888","12345");
 		User u2 = new User(null,"Riverton Mendes","relampago@gmail.com","2832433","54321");
 		userRepository.saveAll(Arrays.asList(u1,u2));
