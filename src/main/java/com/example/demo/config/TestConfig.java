@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.demo.entities.Category;
 import com.example.demo.entities.Order;
+import com.example.demo.entities.OrderItem;
 import com.example.demo.entities.OrderStatus;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.CategoryRepository;
+import com.example.demo.repositories.OrderItemRepository;
 import com.example.demo.repositories.OrderRepository;
 import com.example.demo.repositories.ProductRepository;
 import com.example.demo.repositories.UserRepository;
@@ -29,6 +31,8 @@ public class TestConfig implements CommandLineRunner {
 	private CategoryRepository categoryRepository;
 	@Autowired
 	private ProductRepository productRepository;
+	@Autowired
+	private OrderItemRepository orderItemReposity;
 	@Override
 	public void run(String... args) throws Exception {
 		Category c1 = new Category(null,"Electronics");
@@ -59,7 +63,12 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
+		OrderItem oi1 = new OrderItem(o1,p1,2,p1.getPrice());
+		OrderItem oi2 = new OrderItem(o2,p3,1,p1.getPrice());
+		OrderItem oi3 = new OrderItem(o3,p3,2,p1.getPrice());
+		OrderItem oi4 = new OrderItem(o3,p5,2,p1.getPrice());
 		
+		orderItemReposity.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
 	}
 
